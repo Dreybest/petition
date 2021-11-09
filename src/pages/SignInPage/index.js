@@ -1,4 +1,8 @@
 import React from "react";
+import {
+    Link
+  } from "@reach/router";
+
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 
@@ -20,7 +24,7 @@ const SignInPage = () => {
                                 
                         <div className="col-lg-12">
                           <div className="newsletter-form-current-style1 text-center" data-tm-bg-color="#f4f3ef">
-                              <h2 className="title">Sign In</h2>
+                              <h2 className="title">Sign In</h2>  <p> Don't have an account? <Link to="/sign-up-page"><b>Sign Up</b> </Link> </p> 
                                 <p className="mt-0 mb-35"> Sign in to create and sign Petitions </p>
                                     
                                   <form id="sign-up-form" className="sign-up-form m-0 p-0">

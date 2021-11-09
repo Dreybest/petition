@@ -16,16 +16,7 @@ export const Header = ()=>{
                   <li className="contact-email"><i className="fa fa-envelope font-icon sm-display-block"></i>  info@adjurepetitions.org</li>
                   <li className="contact-address"><i className="fa fa-map font-icon sm-display-block"></i> Ilaro, Ogun State</li>
                 </ul>
-              </div>
-              <div className="col-xl-auto ms-xl-auto header-top-right align-self-center text-center text-xl-end">
-                <div className="element pt-0 pb-0">
-                  <ul className="styled-icons icon-dark icon-theme-colored1 icon-circled clearfix">
-                    <li><a className="social-link" href="#" ><i className="fab fa-facebook"></i></a></li>
-                    <li><a className="social-link" href="#" ><i className="fab fa-twitter"></i></a></li>
-                    <li><a className="social-link" href="#" ><i className="fab fa-youtube"></i></a></li>
-                  </ul>
-                </div>
-              </div>
+              </div>              
             </div>
           </div>
         </div>
@@ -40,7 +31,7 @@ export const Header = ()=>{
                       <img className="logo-default logo-2x retina" src="images/adjure-logo.png" alt="Logo"/>
                     </a>
                   </div>
-                  <div className="col-sm-auto ms-auto pr-0 align-self-center">
+                  <div className="col-sm-auto ms-auto pe-0 align-self-center">
                     <nav id="top-primary-nav" className="menuzord theme-color1" data-effect="fade" data-animation="none" data-align="right">
                       <ul id="main-nav" className="menuzord-menu">
                         <li className="active">
@@ -48,30 +39,12 @@ export const Header = ()=>{
                         <li><Link to="/create-petition">Create Petition</Link></li>
                         <li><Link to="/sign-up-page">Sign Up</Link></li>
                         <li><Link to="/sign-in-page">Sign In</Link></li>
-                        <li><Link to="/petition-page">Petitions</Link></li>
-                        <li><Link to="/petition-details-page">Petition Details</Link></li>
+                        <li><Link to="/petition-page">Petitions</Link></li>                       
                         
                       </ul>
                     </nav>
                   </div>
-                  <div className="col-sm-auto align-self-center nav-side-icon-parent">
-                    <ul className="list-inline nav-side-icon-list">
-                                           
-                      <li className="hidden-mobile-mode">
-                        <div id="side-panel-trigger" className="side-panel-trigger"> <a href="#">
-                          <div className="hamburger-box">
-                            <div className="hamburger-inner"></div>
-                          </div>
-                          </a> </div>
-                      </li>
-                    </ul>
-                    <div id="top-nav-search-form" className="clearfix">
-                      <form action="#" method="GET">
-                        <input type="text" name="s" value="" placeholder="Type and Press Enter..." autocomplete="off" />
-                      </form>
-                      <a href="#" id="close-search-btn"><i className="fa fa-times"></i></a>
-                    </div>
-                  </div>
+                  
                 </div>
                 <div className="row header-nav-clone-col-row d-block d-xl-none">
                    <div className="col-12">
