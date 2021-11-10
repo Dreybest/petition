@@ -2,7 +2,7 @@ import axios from 'axios';
 import { authAPI } from '../../authApiService/AuthApiService';
 import { globalConstants } from '../../constants/global';
 import { petitionActions } from '../../redux/actions';
-import { setToken } from '../../session/Sessions';
+import { setId } from '../../session/Sessions';
 import { handleApiResponseError } from '../../utils/apiErrorHandler';
 import { convertObjToFormData } from '../../utils/formdata';
 
@@ -26,7 +26,7 @@ export const registerModel = ( values, callback = {} ) => {
                 // console.log(response.data);
             if ( status_code === 201 ) {
                 if ( callback.success ) {
-                    setToken(response.data.token);
+                    setId(response.data.id);
                     dispatch( setRegisterState( data ) );
                     return callback.success( response.data );
                 }

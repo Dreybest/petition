@@ -5,40 +5,30 @@ import React from "react"
 
 import { Footer } from "../../components/Footer";
 
-import { Header } from "../../components/Header";
+import { LoggedInHeader } from "../../components/LoggedInHeader/LoggedInHeader";
 import RecentPetition from "../../components/recentPetition/RecentPetition";
 import Slider from "../../components/slider/Slider";
 import Slider2 from "../../components/slider2/Slider2";
 import How from "../../components/how/How";
-import { LoggedInHeader } from "../../components/LoggedInHeader/LoggedInHeader";
-import { useSelector } from "react-redux";
+const LoggedLandingPage = () => {
 
 
-const LandingPage = () => {
-
-
-  const user = useSelector(state => state.petition);
   return (
     <>
       <div id="wrapper" className="clearfix">
-        {
-          user.status === true  ?
-            <LoggedInHeader />
-            : <Header />
-        }
 
-
+        <LoggedInHeader />
 
       </div>
       <div className="main-content-area">
 
         <Slider />
-        <Slider2 />
+        <Slider2/>   
 
-
+      
         <RecentPetition />
-
-        <How />
+       
+      <How />
       </div>
 
       <Footer />
@@ -48,4 +38,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage;
+export default LoggedLandingPage;

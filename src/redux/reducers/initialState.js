@@ -1,6 +1,10 @@
 
   export const petitionInitialState = {
     status: false,
-    id: null
+    isLoggedIn:false,
+    id: null,
+    allPetitions: [],
+    singlePetition:{},
+    allUserPetitions:[]
   };
   

@@ -5,9 +5,10 @@ import React from "react"
 import { Footer } from "../../components/Footer";
 
 import { Header } from "../../components/Header";
-import UserPetitions from "../../components/userPetitions/UserPetitions";
+import AllPetitionsComp from "../../components/allPetitionsComp/AllPetitionsComp";
 
-const PetitionPage = () => {
+
+const AllPetitionPage = () => {
   return (
     <>
       <div id="wrapper" className="clearfix">
@@ -21,7 +22,7 @@ const PetitionPage = () => {
         <section data-tm-bg-color="#fff">
           <div className="section-content mt-lg--0 pt-lg--0" data-tm-margin-top="-183" data-tm-padding-top="184">
             <div className="container">
-              <div className="tm-sc-section-title section-title text-center mb-50">
+              {/* <div className="tm-sc-section-title section-title text-center mb-50">
                 <div className="row">
                   <div className="col-lg-5 m-auto">
                     <div className="title-wrapper mb-0">
@@ -31,10 +32,11 @@ const PetitionPage = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className="row">
 
-               <UserPetitions />
+              <AllPetitionsComp />
+
               </div>
             </div>
           </div>
@@ -73,4 +75,4 @@ const PetitionPage = () => {
   )
 }
 
-export default PetitionPage;
+export default AllPetitionPage;

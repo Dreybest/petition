@@ -13,7 +13,8 @@ import GuidePage from "./pages/GuidePage";
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store/index";
-import { LoggedInHeader } from "./components/LoggedInHeader/LoggedInHeader";
+import LoggedLandingPage from "./pages/LoggedLandingPage";
+import AllPetitionPage from "./pages/allPetitionPage/AllPetitionPage";
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
           <PetitionPage path="/petition-page" />
           <PetitionDetailsPage path="/petition-details-page" />
           <GuidePage path="/guide-page" />
-          <LoggedInHeader path="/homepage"/>
+          <LoggedLandingPage path="/homepage"/>
+          <AllPetitionPage  path="/all-petition-page"/>
 
         </Router>
       </PersistGate>

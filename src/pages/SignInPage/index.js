@@ -24,7 +24,7 @@ const SignInPage = () => {
     successCallback = (response) => {
       setIsSubmitting(false);
       console.log('response >>>>>', response);
-      redirectTo( "/homepage" );
+      redirectTo( "/" );
 
     },
     errorCallback = (error) => {

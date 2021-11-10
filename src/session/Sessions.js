@@ -1,9 +1,9 @@
 // return the token from the session storage
-export const getToken = () => {
-    return sessionStorage.getItem('token');
+export const getId = () => {
+    return sessionStorage.getItem('id');
 }
 
 // set the token from the session storage
-export const setToken = (token) => {
-    return sessionStorage.setItem('token', token);
+export const setId = (id) => {
+    return sessionStorage.setItem('id', id);
 }
