@@ -1,23 +1,32 @@
 <?php
 
 include_once './core/session.class.php';
+include_once './core/petition.class.php';
+include_once './core/user.class.php';
 include_once './core/core.function.php';
 
 $session = new Session();
+$petition_obj = new Petitions();
+$user_obj = new User();
 
-if ($session->check_session('petition_admin')) {
-  redirect("./petitions");
+if (!$session->check_session('petition_admin')) {
+  redirect("./");
 }
-?>
-<!DOCTYPE html>
 
+$id = $_GET['id'];
+
+$petition = $petition_obj->find_one($id);
+$user = $user_obj->find_one($petition['user_id']);
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard</title>
+  <title>Petition Details</title>
 
   <link href="images/favicon.png" rel="shortcut icon" type="image/png">
   <link href="images/apple-touch-icon.png" rel="apple-touch-icon">
@@ -98,44 +107,103 @@ if ($session->check_session('petition_admin')) {
                   <img class="logo-default logo-2x retina" src="images/adjure-logo.png" alt="Logo" />
                 </a>
               </div>
+              <div class="col-sm-auto ms-auto pr-0 align-self-center">
+                <nav id="top-primary-nav" class="menuzord theme-color1" data-effect="fade" data-animation="none" data-align="right">
+                  <ul id="main-nav" class="menuzord-menu">
+                    <li class="active">
+                      <a href="index.php">Login</a>
+                    </li>
+                    <li><a href="petition.php">Petitions</a></li>
+                    <li><a href="petitionDetails.php">Petition Details</a></li>
 
+                  </ul>
+                </nav>
+              </div>
+              <div class="col-sm-auto align-self-center nav-side-icon-parent">
+                <ul class="list-inline nav-side-icon-list">
+                  <li class="hidden-mobile-mode"><a href="#" id="top-nav-search-btn"><i class="search-icon fa fa-search"></i></a></li>
+
+                  <li class="hidden-mobile-mode">
+                    <div id="side-panel-trigger" class="side-panel-trigger"> <a href="#">
+                        <div class="hamburger-box">
+                          <div class="hamburger-inner"></div>
+                        </div>
+                      </a> </div>
+                  </li>
+                </ul>
+                <div id="top-nav-search-form" class="clearfix">
+                  <form action="#" method="GET">
+                    <input type="text" name="s" value="" placeholder="Type and Press Enter..." autocomplete="off" />
+                  </form>
+                  <a href="#" id="close-search-btn"><i class="fa fa-times"></i></a>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <!-- END HEADER -->
-
-  <div class="main-content-area">
-
-    <section>
-      <div class="container pb-100" data-tm-padding-top="10">
-        <div class="section-content">
-          <div class="row">
-
-            <div class="col-lg-12">
-              <div class="newsletter-form-current-style1 text-center" data-tm-bg-color="#f4f3ef">
-                <h2 class="title">Admin Login</h2>
-                <?php if ($session->check_session('response')) {
-                  echo $session->get_session_value('response');
-                  $session->unset_session('response');
-                } ?>
-                <form id="sign-up-form" class="sign-up-form m-0 p-0" method="POST" action="actions/login.php">
-
-                  <input type="email" id="email" class="form-control" placeholder="Email Address" name="email" required /> <br />
-
-                  <input type="password" id="password" class="form-control" placeholder="Password" name="password" required /> <br />
-
-                  <button type="submit" name="login" class="btn btn-lg btn-theme-colored1 btn-flat d-block w-100 mt-20">Sign In</button>
-                </form>
-
+            <div class="row header-nav-clone-col-row d-block d-xl-none">
+              <div class="col-12">
+                <nav id="top-primary-nav-clone" class="menuzord d-block d-xl-none default menuzord-color-default menuzord-border-boxed menuzord-responsive" data-effect="slide" data-animation="none" data-align="right">
+                  <ul id="main-nav-clone" class="menuzord-menu menuzord-right menuzord-indented scrollable">
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </header>>
+  <!-- END HEADER -->
 
+  <div class="main-content-area">
+
+    <section class="page-title layer-overlay overlay-dark-9 section-typo-light bg-img-center" data-tm-bg-img="images/bg/bg1.jpg">
+      <div class="container pt-90 pb-90">
+        <div class="section-content">
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <h2 class="title">Petition Details</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="container mt-30 mb-30 pt-30 pb-30">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="blog-posts single-post">
+              <article class="post clearfix mb-0">
+                <div class="entry-header mb-30">
+                  <div class="post-thumb thumb"> <img src="<?php echo $petition['image']; ?>" alt="images" class="img-responsive img-fullwidth" /> </div>
+                  <h3 class="mt-30"><?php echo $petition['title']; ?></h3>
+                  <div class="entry-meta mt-0">
+                    <span class="mb-10 text-gray mr-10"><i class="far fa-calendar-alt mr-10 text-theme-colored1"></i> <?php echo $petition['created_at']; ?></span>
+                    <span class="mb-10 text-gray mr-10"><i class="far fa-user mr-10 text-theme-colored1"></i> By <?php echo $user['fullname']; ?></span>
+                  </div>
+
+                </div>
+                <div class="entry-content">
+                  <?php echo $petition['description']; ?>
+                  <div class="col-12">
+
+                    <div class="mb-3">
+                      <a href="actions/approve-petition.php?id=<?php echo $id; ?>" class="confirm btn btn-theme-colored1 btn-round m-0" data-loading-text="Please wait...">Approve Petition</a>
+
+                      <a href="actions/reject-petition.php?id=<?php echo $id; ?>" class="confirm btn btn-theme-colored2 btn-round m-0" data-loading-text="Please wait...">Reject Petition</a>
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
   </div>
@@ -165,8 +233,16 @@ if ($session->check_session('petition_admin')) {
 
   </footer>
   <!-- END FOOTER -->
-  <a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
 
+  <script>
+    $(function() {
+      $('.confirm').click(function(e) {
+        if (confirm("Are you sure you want to peform this operation?") == false) {
+          e.preventDefault();
+        }
+      })
+    })
+  </script>
 </body>
 
 </html>
