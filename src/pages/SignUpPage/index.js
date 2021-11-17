@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import { useDispatch } from "react-redux";
 import FormSuccess from '../../utils/FormSuccess';
 import FormError from '../../utils/FormError';
-import { Link } from "@reach/router";
+import { Link, redirectTo } from "@reach/router";
 const SignUpPage = () => {
     const [isSucess, setSuccess] = useState(null),
         [isError, setError] = useState(null),
@@ -32,7 +32,8 @@ const SignUpPage = () => {
             setIsSubmitting(false);
             const { message } = response;
             console.log('response >>>>>', response);
-            setSuccess(message);
+            setSuccess(message); 
+            redirectTo( "/" );
         },
         errorCallback = (error) => {
             setIsSubmitting(false);

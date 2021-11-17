@@ -24,6 +24,7 @@ export const createUserPetition = (values, callback = {}) => {
 
                 dispatch( setUserPetitionState( data ) );
                 // console.log("response.data", data.data);
+                response.data.status = true;
                 return callback.success(response.data) 
             }
             else {

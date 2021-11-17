@@ -4,15 +4,16 @@ import React from "react"
 
 import { Footer } from "../../components/Footer";
 
-import { Header } from "../../components/Header";
+
+import { LoggedInHeader } from "../../components/LoggedInHeader/LoggedInHeader";
 import UserPetitions from "../../components/userPetitions/UserPetitions";
 
 const PetitionPage = () => {
   return (
     <>
-      <div id="wrapper" className="clearfix">
+      <div id="wrapper" className="clearfix"> 
 
-        <Header />
+      <LoggedInHeader />
 
       </div>
 

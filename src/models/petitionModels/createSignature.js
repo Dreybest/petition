@@ -1,33 +1,31 @@
 import axios from 'axios';
 import { authAPI } from '../../authApiService/AuthApiService';
-import { setId } from '../../session/Sessions';
 import { globalConstants } from '../../constants/global';
 import { petitionActions } from '../../redux/actions';
 import { handleApiResponseError } from '../../utils/apiErrorHandler';
 import { convertObjToFormData } from '../../utils/formdata';
 
 
-const setLoginState = ( user ) => {
+const setUserSignature= ( petitionSignature ) => {
     return {
-        type: petitionActions.SET_LOGIN_STATE,
-        payload:user
+        type: petitionActions.SET_SIGNATURE_PETITIONS,
+        payload:petitionSignature
     };
 }; 
-export const userLogin = (values, callback = {}) => {
+export const createUserSignature = (values, callback = {}) => {
     return async (dispatch) => {
         try {
-            const response = await axios.post(authAPI.LOGIN_ENDPOINT, convertObjToFormData(values), {
+            const response = await axios.post(authAPI.SINGLE_USER_SIGNATURE_ENDPOINT, convertObjToFormData(values), {
                 ...globalConstants.POST_HEADER
             });
 
             const { status_code, data } = response.data;
             if (status_code === 200) {
+
+                dispatch( setUserSignature( data ) );
+                // console.log("response.data", data.data);
                 response.data.status = true;
-                setId(response.data.id);
-                console.log(response.data.id);
-                dispatch( setLoginState( response.data ) );
-                console.log(response.data);
-                return callback.success(data) 
+                return callback.success(response.data) 
             }
             else {
                 return callback.error(handleApiResponseError(response.data))
@@ -37,7 +35,7 @@ export const userLogin = (values, callback = {}) => {
             console.log(error);
             if (error && error.response) {
                 if (callback.error) {
-                    callback.error(handleApiResponseError(error.response.data));
+                    callback.error(handleApiResponseError(error));
                 }
             }
         }

@@ -58,7 +58,7 @@ const RecentPetition = () => {
                                     <div className="entry-content">
                                         <h6 className="entry-title mt-0">
                                             {
-                                                user.status ?
+                                                user.user.status ?
                                                     <Link to="/petition-details-page">{petitions.title}</Link>
                                                     : <Link to="/sign-in-page">{petitions.title}</Link>
                                             }
@@ -66,7 +66,7 @@ const RecentPetition = () => {
                                         </h6>
                                         <div className="post-btn-readmore">
                                             {
-                                                user.status ?
+                                                user.user.status ?
                                                     <Link to="/petition-details-page" className="btn btn-plain-text-with-arrow">Read More</Link>
                                                     : <Link to="/sign-in-page" className="btn btn-plain-text-with-arrow">Read More</Link>
                                             }

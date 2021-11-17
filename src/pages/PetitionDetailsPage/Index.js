@@ -6,16 +6,17 @@ import React from "react";
 
 import { Footer } from "../../components/Footer";
 
-import { Header } from "../../components/Header";
+
 import PetitionDetails from "../../components/petitionDetail/PetitionDetails";
 import Comments from "../../components/comments/Comments";
+import { LoggedInHeader } from "../../components/LoggedInHeader/LoggedInHeader";
 const MainPetitionPage = () => {
 
   return (
     <>
       <div id="wrapper" className="clearfix">
 
-        <Header />
+      <LoggedInHeader />
 
       </div>
 

@@ -26,6 +26,7 @@ export const getAllUserPetitions = (user_id) => {
             const { status_code, data } = response.data;
             if ( status_code === 200 ) {
                 // console.log("responseresponse>>>>>>", data);
+                response.data.status = true;
                 dispatch(setAllUserPetitions(data))
             } else {
                 handleApiResponseError( response.data );

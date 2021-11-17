@@ -27,6 +27,7 @@ export const getPetition = (singlePetitionId) => {
                 });
             const { status_code, data } = response.data;
             if (status_code === 200) {
+                response.data.status = true; 
                 // console.log("responseresponse>>>>>>", data);
                 dispatch(setPetition(data))
             } else {

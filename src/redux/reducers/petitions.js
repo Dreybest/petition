@@ -6,13 +6,20 @@ import { petitionInitialState } from "./initialState";
 export const petitionsReducer = (state = petitionInitialState, action) => {
 
   switch (action.type) {
+    case petitionActions.SET_ALL_PETITIONS:
+      return {
+        ...state,
+        isLoggedIn: false,
+        status: false,
+        allPetitions: action.payload
 
+      };
     case petitionActions.SET_REGISTER_STATE:
       return {
         ...state,
         isLoggedIn: true,
         status: true,
-        ...action.payload
+        user: action.payload
       };
 
     case petitionActions.SET_SINGLE_PETITIONS:
@@ -40,14 +47,21 @@ export const petitionsReducer = (state = petitionInitialState, action) => {
 
       };
 
-
+      case petitionActions.SET_SIGNATURE_PETITIONS:
+        return {
+          ...state,
+          isLoggedIn: true,
+          status: true,
+          petitionSignature: action.payload
+  
+        };
 
     case petitionActions.SET_LOGIN_STATE:
       return {
         ...state,
         isLoggedIn: true,
         status: true,
-        ...action.payload,
+        user: action.payload,
 
       };
     // allUserPetitions
@@ -59,13 +73,7 @@ export const petitionsReducer = (state = petitionInitialState, action) => {
 
 
       };
-    case petitionActions.SET_ALL_PETITIONS:
-      return {
-        ...state,
-        isLoggedIn: false,
-        allPetitions: action.payload
 
-      };
 
     default:
       return state;

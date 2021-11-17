@@ -10,8 +10,8 @@ const UserPetitions = () => {
     let dispatch = useDispatch();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const fetchAllUserPetitions = async () => {
-        console.log(userPetition.id);
-        await dispatch(getAllUserPetitions(userPetition.id));
+        console.log(userPetition.user_id);
+        await dispatch(getAllUserPetitions(userPetition.user_id));
     };
     useEffect(() => {
         fetchAllUserPetitions()

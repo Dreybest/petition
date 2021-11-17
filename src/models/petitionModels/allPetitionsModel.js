@@ -28,7 +28,9 @@ export const getAllPetitions = () => {
             // console.log("responseresponse>>>>>>", response.data)
             const { status_code, data } = response.data;
             if ( status_code === 200 ) {
-                // console.log("responseresponse>>>>>>", data)
+               
+                // response.data.status = false;
+                 console.log("responseresponse>>>>>>", response.data.status);
                 dispatch(setAllPetitions(data))
             } else {
                 handleApiResponseError( response.data );

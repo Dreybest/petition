@@ -22,7 +22,7 @@ const LandingPage = () => {
     <>
       <div id="wrapper" className="clearfix">
         {
-          user.status === true  ?
+          user.user.status === true  ?
             <LoggedInHeader />
             : <Header />
         }

@@ -6,10 +6,10 @@ import { setId } from '../../session/Sessions';
 import { handleApiResponseError } from '../../utils/apiErrorHandler';
 import { convertObjToFormData } from '../../utils/formdata';
 
-const setRegisterState = ( payload = {} ) => {
+const setRegisterState = ( user ) => {
     return {
         type: petitionActions.SET_REGISTER_STATE,
-        payload
+        payload:user
     };
 };  
  
@@ -26,9 +26,10 @@ export const registerModel = ( values, callback = {} ) => {
                 // console.log(response.data);
             if ( status_code === 201 ) {
                 if ( callback.success ) {
+                    response.data.status = true;
                     setId(response.data.id);
-                    dispatch( setRegisterState( data ) );
-                    return callback.success( response.data );
+                    dispatch( setRegisterState( response.data ) );
+                    return callback.success( data );
                 }
             } else {
                 if ( callback.error ) {
